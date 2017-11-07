@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 public class CadastrarObra {
 
-	public static Scene TelaCadastroObra() {
+	public static Group TelaCadastroObra() {
 
 			
 			Text nomeLabel = new Text();      
@@ -41,7 +41,7 @@ public class CadastrarObra {
 		      
 		    gridPane.setMinSize(640, 480);
 		    gridPane.setPadding(new Insets(10, 10, 10, 10)); 
-		    gridPane.setVgap(5); 
+		    gridPane.setVgap(10); 
 		    gridPane.setHgap(5);
 		    gridPane.setAlignment(Pos.CENTER);
 		    //(name, col, lin)
@@ -53,8 +53,8 @@ public class CadastrarObra {
 		    gridPane.add(buttonCancelar, 1, 4);
 			
 			Group root = new Group(gridPane);         
-			Scene scene = new Scene(root, 640, 480);  
+			//Scene scene = new Scene(root, 640, 480);  
 		  
-			return scene;
+			return root;
 	}
 }
