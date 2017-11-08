@@ -69,3 +69,76 @@
 //		launch(args);
 //	}
 //}
+
+package gui;
+
+import java.io.IOException;
+import java.net.URL;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+
+public class Main extends Application {
+
+	@FXML
+	AnchorPane anchoPane;
+
+	public static void main(String[] args) {
+		launch();
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+//		URL fxml = getClass().getResource("main.fxml");
+//		Parent parent = (Parent) FXMLLoader.load(fxml);
+//		stage.setTitle("Contas a pagar!");
+//		stage.setScene(new Scene(parent));
+//		stage.show();
+		Parent root = null;
+	    try {
+	        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
+	       // fxmlLoader.setController(this);
+	        //root = (Region) fxmlLoader.load();
+	    	URL fxml = getClass().getResource("main.fxml");
+			root = (Parent) FXMLLoader.load(fxml);
+	    } catch (Exception ex) {
+	    }
+
+	    Scene scene = new Scene(root);
+
+	    Stage stage = new Stage();
+	    stage.setTitle("APP - Informações");
+	    stage.setScene(scene);
+	    //stage.initModality(Modality.WINDOW_MODAL);
+	    stage.show();
+		
+
+	}
+	
+	@FXML
+	private void handleJan1(ActionEvent event) throws IOException {
+	    System.out.println("Iniciando ABA 1");
+	    try {
+	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cadastrarObra.fxml"));
+	        fxmlLoader.setController(this);
+	        Node n = (Node) fxmlLoader.load();
+	        anchoPane.getChildren().add(n);
+	    } catch (Exception ex) {
+	    }
+	}
+
+}

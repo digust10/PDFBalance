@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import org.aprendendojavafx.crud.model.Conta;
 import org.aprendendojavafx.crud.service.ContasService;
 
+import application.Obra;
+import gui.CadastrarObra;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * 
@@ -56,7 +59,15 @@ public class ContasController /*implements Initializable*/ {
 //	 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 	
 
-	// métodos públicos chamados quando o botão é clicado
+	// metodos publicos para cliques de botao
+	
+	public void cadastrarObra() throws Exception {
+		System.out.println("---- INICIAR CADASTRO -----------");
+		
+		new CadastrarObra().start();
+		System.out.println("---- NOVA OBRA CRIADA -----------");
+		
+	}
 	
 	public void salvar() {
 		Conta c = new Conta();
@@ -113,7 +124,9 @@ public class ContasController /*implements Initializable*/ {
 		clVenc.setCellValueFactory(new PropertyValueFactory<>("dataVencimento"));
 	}
 
-	// configura a lógica da tela
+	
+	
+	// configura a logica da tela
 	private void configuraBindings() {
 		// esse binding só e false quando os campos da tela estão preenchidos
 		BooleanBinding camposPreenchidos = txtConsc.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())

@@ -1,10 +1,15 @@
 package gui;
 
+import java.io.IOException;
+import java.net.URL;
+
 import application.Funcionario;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -18,43 +23,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class CadastrarObra {
-
-	public static Group TelaCadastroObra() {
-
-			
-			Text nomeLabel = new Text();      
-			nomeLabel.setText("Nome:");
-			nomeLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
-
-			TextField nomeText = new TextField(); 
-		  
-			Text custoLabel = new Text();      
-			custoLabel.setText("Custo:");
-			custoLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 16));
-
-			TextField custoText = new TextField(); 
-			
-			Button buttonOk = new Button("OK"); 
-		    Button buttonCancelar = new Button("Cancelar"); 
-		    
-		    GridPane gridPane = new GridPane();    
-		      
-		    gridPane.setMinSize(640, 480);
-		    gridPane.setPadding(new Insets(10, 10, 10, 10)); 
-		    gridPane.setVgap(10); 
-		    gridPane.setHgap(5);
-		    gridPane.setAlignment(Pos.CENTER);
-		    //(name, col, lin)
-		    gridPane.add(nomeLabel, 0, 0);
-		    gridPane.add(nomeText, 1, 0);
-		    gridPane.add(custoLabel, 0, 1);
-		    gridPane.add(custoText, 1, 1);
-		    gridPane.add(buttonOk, 0, 4);
-		    gridPane.add(buttonCancelar, 1, 4);
-			
-			Group root = new Group(gridPane);         
-			//Scene scene = new Scene(root, 640, 480);  
-		  
-			return root;
+	
+	public void start() {
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource("cadastrarObra.fxml"));
+			Stage stage = new Stage();
+			Scene scene = new Scene(root, 800, 600);
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
