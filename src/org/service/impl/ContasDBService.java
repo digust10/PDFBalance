@@ -1,4 +1,4 @@
-package org.aprendendojavafx.crud.service.impl;
+package org.service.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.aprendendojavafx.crud.model.Conta;
-import org.aprendendojavafx.crud.service.ContasService;
+import org.model.Conta;
+import org.service.ContasService;
 
 /**
  * Faz as operações de CRUD usando banco de dados MySQL. Para rodar essa classe

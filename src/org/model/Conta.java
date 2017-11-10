@@ -1,4 +1,4 @@
-package org.aprendendojavafx.crud.model;
+package org.model;
 
 import java.util.Date;
 

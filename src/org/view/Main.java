@@ -70,7 +70,7 @@
 //	}
 //}
 
-package gui;
+package org.view;
 
 import java.io.IOException;
 import java.net.URL;
@@ -110,9 +110,6 @@ public class Main extends Application {
 //		stage.show();
 		Parent root = null;
 	    try {
-	        //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
-	       // fxmlLoader.setController(this);
-	        //root = (Region) fxmlLoader.load();
 	    	URL fxml = getClass().getResource("main.fxml");
 			root = (Parent) FXMLLoader.load(fxml);
 	    } catch (Exception ex) {
@@ -123,22 +120,7 @@ public class Main extends Application {
 	    Stage stage = new Stage();
 	    stage.setTitle("APP - Informações");
 	    stage.setScene(scene);
-	    //stage.initModality(Modality.WINDOW_MODAL);
 	    stage.show();
-		
-
 	}
 	
-	@FXML
-	private void handleJan1(ActionEvent event) throws IOException {
-	    System.out.println("Iniciando ABA 1");
-	    try {
-	        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cadastrarObra.fxml"));
-	        fxmlLoader.setController(this);
-	        Node n = (Node) fxmlLoader.load();
-	        anchoPane.getChildren().add(n);
-	    } catch (Exception ex) {
-	    }
-	}
-
 }

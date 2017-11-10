@@ -1,10 +1,10 @@
-package org.aprendendojavafx.crud.service;
+package org.service;
 
 import java.util.List;
 
-import org.aprendendojavafx.crud.model.Conta;
-import org.aprendendojavafx.crud.service.impl.ContasCSVService;
-import org.aprendendojavafx.crud.service.impl.ContasDBService;
+import org.model.Conta;
+import org.service.impl.ContasCSVService;
+import org.service.impl.ContasDBService;
 
 /**
  * 

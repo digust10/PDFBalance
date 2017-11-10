@@ -1,4 +1,4 @@
-package org.aprendendojavafx.crud.service.impl;
+package org.service.impl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.aprendendojavafx.crud.model.Conta;
-import org.aprendendojavafx.crud.service.ContasService;
+import org.model.Conta;
+import org.service.ContasService;
 
 /**
  * 

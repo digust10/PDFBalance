@@ -1,4 +1,4 @@
-package org.aprendendojavafx.crud.controller;
+package org.controller;
 
 //import java.net.URL;
 import java.time.LocalDate;
@@ -7,11 +7,11 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import org.aprendendojavafx.crud.model.Conta;
-import org.aprendendojavafx.crud.service.ContasService;
+import org.model.Conta;
+import org.model.Obra;
+import org.service.ContasService;
+import org.view.CadastrarObra;
 
-import application.Obra;
-import gui.CadastrarObra;
 import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  * @author wsiqueir
  *
  */
-public class ContasController /*implements Initializable*/ {
+public class ObrasController {
 
 	@FXML
 	private TableView<Conta> tblContas;
@@ -56,17 +56,23 @@ public class ContasController /*implements Initializable*/ {
 
 	private ContasService service;
 
-//	 Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
+	//	Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
 	
 
 	// metodos publicos para cliques de botao
 	
-	public void cadastrarObra() throws Exception {
-		System.out.println("---- INICIAR CADASTRO -----------");
+	public void cadastrarObraPessoal() throws Exception {
+		System.out.println("---- INICIAR CADASTRO Pessoal-----------");
 		
 		new CadastrarObra().start();
 		System.out.println("---- NOVA OBRA CRIADA -----------");
+	}
+	
+	public void cadastrarObraEmpreiteira() throws Exception {
+		System.out.println("---- INICIAR CADASTRO Empreiteira -----------");
 		
+		new CadastrarObra().start();
+		System.out.println("---- NOVA OBRA CRIADA -----------");
 	}
 	
 	public void salvar() {
@@ -97,7 +103,6 @@ public class ContasController /*implements Initializable*/ {
 	}
 	
 	// métodos privados do controller
-
 	// pega os valores entrados pelo usuário e adiciona no objeto conta
 	private void pegaValores(Conta c) {
 		c.setConcessionaria(txtConsc.getText());
@@ -123,8 +128,6 @@ public class ContasController /*implements Initializable*/ {
 		clDesc.setCellValueFactory(new PropertyValueFactory<>("descricao"));
 		clVenc.setCellValueFactory(new PropertyValueFactory<>("dataVencimento"));
 	}
-
-	
 	
 	// configura a logica da tela
 	private void configuraBindings() {
@@ -151,5 +154,4 @@ public class ContasController /*implements Initializable*/ {
 			}
 		});
 	}
-
 }
