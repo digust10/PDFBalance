@@ -1,4 +1,4 @@
-package application;
+package org.model;
 
 public class Obra {
 	int id;

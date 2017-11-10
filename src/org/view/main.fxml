@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.controller.ObrasController">
+   <children>
+      <TabPane layoutY="41.0" prefHeight="559.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Obras pessoais">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="578.0">
+                     <children>
+                        <ListView layoutX="14.0" layoutY="14.0" prefHeight="437.0" prefWidth="768.0" />
+                        <Button fx:id="btnCadastrarObra" layoutX="14.0" layoutY="465.0" mnemonicParsing="false" onAction="#cadastrarObraPessoal" prefHeight="43.0" prefWidth="162.0" text="Cadastrar obra pessoal" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Obras empreiteira">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="438.0" prefWidth="578.0">
+                     <children>
+                        <ListView layoutX="14.0" layoutY="14.0" prefHeight="437.0" prefWidth="768.0" />
+                        <Button fx:id="btnCadastrarObra1" layoutX="14.0" layoutY="465.0" mnemonicParsing="false" onAction="#cadastrarObraEmpreiteira" prefHeight="43.0" prefWidth="164.0" text="Cadastrar obra empreiteira" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
