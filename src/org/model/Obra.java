@@ -2,14 +2,17 @@ package org.model;
 
 public class Obra {
 	int id;
-	double custos;
+	String custos;
 	String name;
 
-	public Obra(int id, double custos, String name) {
+	public Obra(int id, String custos, String name) {
 		super();
 		this.id = id;
 		this.custos = custos;
 		this.name = name;
+	}
+	public Obra() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getId() {
 		return id;
@@ -17,11 +20,11 @@ public class Obra {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public double getCustos() {
+	public String getCustos() {
 		return custos;
 	}
-	public void setCustos(double custos) {
-		this.custos = custos;
+	public void setCustos(String colunas) {
+		this.custos = colunas;
 	}
 	public String getName() {
 		return name;

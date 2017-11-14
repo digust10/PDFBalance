@@ -1,10 +1,13 @@
 package org.controller;
 
+import java.net.URL;
 //import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import org.model.Conta;
@@ -13,10 +16,12 @@ import org.service.ContasService;
 import org.view.CadastrarObra;
 
 import javafx.beans.binding.BooleanBinding;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,7 +34,7 @@ import javafx.stage.Stage;
  * @author wsiqueir
  *
  */
-public class ObrasController {
+public class ObrasController implements Initializable {
 
 	@FXML
 	private TableView<Conta> tblContas;
@@ -53,27 +58,33 @@ public class ObrasController {
 	private Button btnApagar;
 	@FXML
 	private Button btnLimpart;
-
+	@FXML
+    private ListView listViewObraPessoal;
+	@FXML
+    private ListView listViewObraEmpreiteira;
+	
 	private ContasService service;
 
-	//	Esse método é chamado ao inicializar a aplicação, igual um construtor. Ele vem da interface Initializable
-	
-
 	// metodos publicos para cliques de botao
-	
 	public void cadastrarObraPessoal() throws Exception {
-		System.out.println("---- INICIAR CADASTRO Pessoal-----------");
-		
+		System.out.println("---- INICIAR cadastrarObraPessoall-----------");
 		new CadastrarObra().start();
-		System.out.println("---- NOVA OBRA CRIADA -----------");
 	}
 	
 	public void cadastrarObraEmpreiteira() throws Exception {
-		System.out.println("---- INICIAR CADASTRO Empreiteira -----------");
-		
+		System.out.println("---- INICIAR cadastrarObraEmpreiteira -----------");
 		new CadastrarObra().start();
-		System.out.println("---- NOVA OBRA CRIADA -----------");
 	}
+	
+	@Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // change next line to DB load
+        List<String> valuesPessoal = Arrays.asList("Obra Pessoal 1", "Obra Pessoal 2", "Obra Pessoal 3");
+        listViewObraPessoal.setItems(FXCollections.observableList(valuesPessoal));
+        
+        List<String> valuesEmpreiteira = Arrays.asList("Obra Empreiteira 1", "Obra Empreiteira 2", "Obra Empreiteira 3");
+        listViewObraEmpreiteira.setItems(FXCollections.observableList(valuesEmpreiteira));
+    }
 	
 	public void salvar() {
 		Conta c = new Conta();
@@ -102,8 +113,8 @@ public class ObrasController {
 		dpVencimento.setValue(null);
 	}
 	
-	// métodos privados do controller
-	// pega os valores entrados pelo usuário e adiciona no objeto conta
+	// metodos privados do controller
+	// pega os valores entrados pelo usuario e adiciona no objeto conta
 	private void pegaValores(Conta c) {
 		c.setConcessionaria(txtConsc.getText());
 		c.setDescricao(txtDesc.getText());
