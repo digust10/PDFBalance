@@ -32,7 +32,7 @@ public interface ContasService {
 	
 	// retorna a implementação que escolhemos - no nosso caso o ContasCSVService, 
 	// mas poderia ser outro, como ContasDBService...
-	public static ContasService getNewInstance() {
+	public static ContasDBService getNewInstance() {
 		// return new ContasCSVService();
 		return new ContasDBService();
 	}
