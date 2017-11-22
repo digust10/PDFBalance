@@ -37,6 +37,8 @@
                   <TextField fx:id="txtNomeObra" layoutX="116.0" layoutY="68.0" prefHeight="25.0" prefWidth="457.0" />
                   <TextField fx:id="txtCustoObra" layoutX="116.0" layoutY="100.0" prefHeight="25.0" prefWidth="184.0" promptText="R$" />
                   <ListView fx:id="listFuncinarios" layoutX="116.0" layoutY="142.0" prefHeight="337.0" prefWidth="637.0" />
+            
+
                </children>
             </AnchorPane>
           <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="770.0">
