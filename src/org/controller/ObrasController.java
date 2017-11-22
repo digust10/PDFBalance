@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import org.model.Conta;
 import org.model.Obra;
 import org.service.ContasService;
+import org.service.impl.ContasDBService;
 import org.view.CadastrarObra;
 
 import javafx.beans.binding.BooleanBinding;
@@ -65,7 +66,10 @@ public class ObrasController {
 		System.out.println("---- INICIAR CADASTRO Pessoal-----------");
 		
 		new CadastrarObra().start();
+		//new ContasDBService().salvarObra(1,"nome",20);
+		new ContasDBService().salvarObra(3, "Diego" , 10.0);
 		System.out.println("---- NOVA OBRA CRIADA -----------");
+		
 	}
 	
 	public void cadastrarObraEmpreiteira() throws Exception {
