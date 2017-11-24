@@ -70,7 +70,6 @@ public class ObrasController implements Initializable {
 	public void cadastrarObraPessoal() throws Exception {
 		System.out.println("---- INICIAR cadastrarObraPessoall-----------");
 		new CadastrarObra().start();
-		new ContasDBService().salvarObra(3, "Diego" , 10.0);
 		System.out.println("---- NOVA OBRA CRIADA -----------");
 	}
 	

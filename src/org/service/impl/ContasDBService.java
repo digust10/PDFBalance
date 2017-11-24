@@ -16,7 +16,7 @@ public class ContasDBService {
 	static final String USER = "admin";
 	static final String PASS = "beto55";
 
-	public void salvarObra(int id, String nome, double custo) {
+	public void salvarObra(String nome, double custo, String descricao) {
 		Connection conn = null;
 		Statement stmt = null;
 		
@@ -32,8 +32,8 @@ public class ContasDBService {
 			  System.out.println("Creating statement...");
 			  stmt = conn.createStatement();
 			  String sql;
-			  ultimaObraId();
-			  sql = "INSERT INTO tabelaObras( id , nome , custo) VALUES(" + id + ", '" + nome +"', "+ custo +")";
+			  int nextId = ultimaObraId() + 1;
+			  sql = "INSERT INTO tabelaObras( id , nome , custo) VALUES(" + nextId + ", '" + nome +"', "+ custo +")";
 			  stmt.executeUpdate(sql);
 
 			  stmt.close();
