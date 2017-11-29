@@ -2,10 +2,10 @@ package org.model;
 
 public class Obra {
 	int id;
-	String custos;
+	Double custos;
 	String name;
 
-	public Obra(int id, String custos, String name) {
+	public Obra(int id, Double custos, String name) {
 		super();
 		this.id = id;
 		this.custos = custos;
@@ -20,10 +20,10 @@ public class Obra {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCustos() {
+	public Double getCustos() {
 		return custos;
 	}
-	public void setCustos(String colunas) {
+	public void setCustos(Double colunas) {
 		this.custos = colunas;
 	}
 	public String getName() {

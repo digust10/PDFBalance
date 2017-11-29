@@ -2,6 +2,7 @@ package org.controller;
 
 import org.model.Conta;
 import org.model.Obra;
+import org.service.impl.ContasDBService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,6 +36,7 @@ public class CadastroObrasController {
 		
 		System.out.println("nome: " + obra.getName());
 		System.out.println("Custo: " + obra.getCustos());
+		new ContasDBService().salvarObra(obra.getName() , obra.getCustos(), "");
 		
 		System.out.println("----SALVOU-----------");
 		
@@ -42,7 +44,7 @@ public class CadastroObrasController {
 	
 	private void pegaValores(Obra o) {
 		o.setName(txtNomeObra.getText());
-		o.setCustos(txtCustoObra.getText());
+		o.setCustos(Double.parseDouble(txtCustoObra.getText()));
 	}
 		
 }
