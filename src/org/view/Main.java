@@ -99,6 +99,11 @@ public class Main extends Application {
 
 	@FXML
 	AnchorPane anchoPane;
+	
+	private static Stage stage;
+	
+	private static Scene mainScene;
+	private static Scene cadastraObraScene;
 
 	public static void main(String[] args) {
 		launch();
@@ -106,25 +111,29 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		URL fxml = getClass().getResource("main.fxml");
-//		Parent parent = (Parent) FXMLLoader.load(fxml);
-//		stage.setTitle("Contas a pagar!");
-//		stage.setScene(new Scene(parent));
-//		stage.show();
-		Parent root = null;
-	    try {
-	    	URL fxml = getClass().getResource("main.fxml");
-			root = (Parent) FXMLLoader.load(fxml);
-	    } catch (Exception ex) {
-	    }
-	    
-
-	    Scene scene = new Scene(root);
-
-	    Stage stage = new Stage();
-	    stage.setTitle("APP - Informações");
-	    stage.setScene(scene);
-	    stage.show();
+		stage = primaryStage;
+		
+		Parent fxmlMain = FXMLLoader.load(getClass().getResource("main.fxml"));
+		mainScene = new Scene(fxmlMain, 800, 600);
+		
+		Parent fxmlCadastraObra = FXMLLoader.load(getClass().getResource("cadastrarObra.fxml"));
+		cadastraObraScene = new Scene(fxmlCadastraObra, 800, 600);
+	
+		primaryStage.setTitle("APP - Informações");
+		primaryStage.setScene(mainScene);
+		primaryStage.show();
+	}
+	
+	public static void changeScreen(String str) {
+		switch(str) {
+		case "main":
+			stage.setScene(mainScene);
+			break;
+			
+		case "cadastrarObra":
+			stage.setScene(cadastraObraScene);
+			break;
+		}
 	}
 	
 }
