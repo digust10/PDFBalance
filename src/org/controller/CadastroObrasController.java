@@ -3,6 +3,7 @@ package org.controller;
 import org.model.Conta;
 import org.model.Obra;
 import org.service.impl.ContasDBService;
+import org.view.Main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,6 +40,7 @@ public class CadastroObrasController {
 		new ContasDBService().salvarObra(obra.getName() , obra.getCustos(), "");
 		
 		System.out.println("----SALVOU-----------");
+		Main.changeScreen("main");
 		
 	}
 	
