@@ -1,5 +1,7 @@
 package org.controller;
 
+import java.util.List;
+
 import org.model.Conta;
 import org.model.Obra;
 import org.service.impl.ContasDBService;
@@ -29,17 +31,29 @@ public class CadastroObrasController {
 
 	// metodos publicos para cliques de botao
 	public void salvarObraPessoal() throws Exception {
-		System.out.println("---- SALVAR ObraPessoall-----------");
 		obra = new Obra();
-		
+		ContasDBService x = new ContasDBService();
 		pegaValores(obra);
+		x.salvarObra(obra.getName(),obra.getCustos(),"");
 		
-		System.out.println("nome: " + obra.getName());
-		System.out.println("Custo: " + obra.getCustos());
-		new ContasDBService().salvarObra(obra.getName() , obra.getCustos(), "");
+	}
+	
+	public List<Obra> getObraPessoalLista(){
+		ContasDBService x = new ContasDBService();
+		return x.listaObras();
+	}
+	
+	public boolean editarObraPessoal(Obra obra) throws Exception {
+		obra = new Obra();
+		ContasDBService x = new ContasDBService();
+		pegaValores(obra);
+		return x.editObra(obra);
 		
-		System.out.println("----SALVOU-----------");
-		
+	}
+	
+	public boolean deleteObraPessoal(Obra obra){
+		ContasDBService x = new ContasDBService();
+		return x.deleteObra(obra);
 	}
 	
 	private void pegaValores(Obra o) {
