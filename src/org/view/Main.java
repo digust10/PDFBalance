@@ -103,7 +103,8 @@ public class Main extends Application {
 	private static Stage stage;
 	
 	private static Scene mainScene;
-	private static Scene cadastraObraScene;
+	private static Scene cadastrarObraScene;
+	private static Scene visualizarObraScene;
 
 	public static void main(String[] args) {
 		launch();
@@ -117,9 +118,12 @@ public class Main extends Application {
 		mainScene = new Scene(fxmlMain, 800, 600);
 		
 		Parent fxmlCadastraObra = FXMLLoader.load(getClass().getResource("cadastrarObra.fxml"));
-		cadastraObraScene = new Scene(fxmlCadastraObra, 800, 600);
-	
-		primaryStage.setTitle("APP - Informações");
+		cadastrarObraScene = new Scene(fxmlCadastraObra, 800, 600);
+		
+		Parent fxmlVisualizarObra = FXMLLoader.load(getClass().getResource("visualizarObra.fxml"));
+		visualizarObraScene = new Scene(fxmlVisualizarObra, 800, 600);
+		
+		primaryStage.setTitle("PDFBalance");
 		primaryStage.setScene(mainScene);
 		primaryStage.show();
 	}
@@ -131,7 +135,11 @@ public class Main extends Application {
 			break;
 			
 		case "cadastrarObra":
-			stage.setScene(cadastraObraScene);
+			stage.setScene(cadastrarObraScene);
+			break;
+		
+		case "visualizarObra":
+			stage.setScene(visualizarObraScene);
 			break;
 		}
 	}

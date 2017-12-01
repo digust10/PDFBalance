@@ -19,6 +19,7 @@ import org.view.Main;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -89,6 +91,16 @@ public class ObrasController implements Initializable {
         
         List<String> valuesEmpreiteira = Arrays.asList("Obra Empreiteira 1", "Obra Empreiteira 2", "Obra Empreiteira 3");
         listViewObraEmpreiteira.setItems(FXCollections.observableList(valuesEmpreiteira));
+        
+        listViewObraPessoal.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        	@Override
+            public void handle(MouseEvent event) {
+                System.out.println("clicked on " + listViewObraPessoal.getSelectionModel().getSelectedItem());
+                Main.changeScreen("visualizarObra");
+            }
+		});
+        
+
     }
 	
 	public void salvar() {
