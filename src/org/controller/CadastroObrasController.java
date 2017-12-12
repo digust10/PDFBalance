@@ -5,6 +5,7 @@ import java.util.List;
 import org.model.Conta;
 import org.model.Obra;
 import org.service.impl.ContasDBService;
+import org.view.Main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +36,7 @@ public class CadastroObrasController {
 		ContasDBService x = new ContasDBService();
 		pegaValores(obra);
 		x.salvarObra(obra.getName(),obra.getCustos(),"");
-		
+
 	}
 	
 	public List<Obra> getObraPessoalLista(){

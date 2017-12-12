@@ -15,6 +15,7 @@ import org.model.Obra;
 import org.service.ContasService;
 import org.service.impl.ContasDBService;
 import org.view.CadastrarObra;
+import org.view.Main;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
@@ -69,7 +70,9 @@ public class ObrasController implements Initializable {
 	// metodos publicos para cliques de botao
 	public void cadastrarObraPessoal() throws Exception {
 		System.out.println("---- INICIAR cadastrarObraPessoall-----------");
-		new CadastrarObra().start();
+		Main.changeScreen("cadastrarObra");
+		
+		//new CadastrarObra().start();
 		System.out.println("---- NOVA OBRA CRIADA -----------");
 	}
 	
