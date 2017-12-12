@@ -1,6 +1,10 @@
 package org.service.impl;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.model.Obra;
 
 public class ContasDBService {
 	
@@ -16,6 +20,137 @@ public class ContasDBService {
 	static final String USER = "admin";
 	static final String PASS = "beto55";
 
+	public boolean editObra(Obra obraAEditar) {
+		Connection conn = null;
+		Statement stmt = null;
+
+		if(obraAEditar.getName().isEmpty() || obraAEditar.getCustos().isNaN()) {
+			return false;
+		}
+		
+		try{
+			  Class.forName("com.mysql.jdbc.Driver");
+			  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			  stmt = conn.createStatement();
+			  String sql;
+			  System.out.println("Dentro do  Update deve atualizar? id " + obraAEditar.getId() + " nome: " + obraAEditar.getName() );
+			  sql = "UPDATE tabelaObras SET nome = '" + obraAEditar.getName() + "' , custo = " + obraAEditar.getCustos() + "WHERE id = " + obraAEditar.getId() + ";";
+			  int rs =  stmt.executeUpdate(sql);
+			  
+			  stmt.close();
+			  conn.close();
+			  
+			}catch(SQLException se){
+			  //Handle errors for JDBC
+			  se.printStackTrace();
+			}catch(Exception e){
+			  //Handle errors for Class.forName
+			  e.printStackTrace();
+			}finally{
+			  //finally block used to close resources
+			  try{
+			     if(stmt!=null)
+			        stmt.close();
+			  }catch(SQLException se2){
+			  }// nothing we can do
+			  try{
+			     if(conn!=null)
+			        conn.close();
+			  }catch(SQLException se){
+			     se.printStackTrace();
+			  }//end finally try
+			}//end try
+			return true;	
+		}
+
+	public boolean deleteObra(Obra obraAEditar) {
+		Connection conn = null;
+		Statement stmt = null;
+		
+		try{
+			  Class.forName("com.mysql.jdbc.Driver");
+			  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			  stmt = conn.createStatement();
+			  String sql;
+			  sql = "DELETE FROM tabelaObras WHERE id = " + obraAEditar.getId() + ";";
+			  int rs =  stmt.executeUpdate(sql);
+			  
+			  stmt.close();
+			  conn.close();
+			  
+			}catch(SQLException se){
+			  //Handle errors for JDBC
+			  se.printStackTrace();
+			}catch(Exception e){
+			  //Handle errors for Class.forName
+			  e.printStackTrace();
+			}finally{
+			  //finally block used to close resources
+			  try{
+			     if(stmt!=null)
+			        stmt.close();
+			  }catch(SQLException se2){
+			  }// nothing we can do
+			  try{
+			     if(conn!=null)
+			        conn.close();
+			  }catch(SQLException se){
+			     se.printStackTrace();
+			  }//end finally try
+			}//end try
+			return true;	
+		}
+
+	
+	public List<Obra> listaObras() {
+		Connection conn = null;
+		Statement stmt = null;
+		int idReturn = -1;
+		List aRetornar = new ArrayList<Obra>();
+		
+		try{
+			  Class.forName("com.mysql.jdbc.Driver");
+			  conn = DriverManager.getConnection(DB_URL,USER,PASS);
+			  stmt = conn.createStatement();
+			  String sql;
+			  sql = "SELECT id, nome, custo FROM tabelaObras";
+			  ResultSet rs =  stmt.executeQuery(sql);
+			  
+			  
+			  while(rs.next()){
+				  System.out.println("vai add: " + rs.getInt("id") + " " + rs.getDouble("custo") + " " + rs.getString("nome") );
+				  Obra current = new Obra(rs.getInt("id"), rs.getDouble("custo"), rs.getString("nome"));
+				  aRetornar.add(current);
+			  }
+
+			  stmt.close();
+			  conn.close();
+			  
+			}catch(SQLException se){
+			  //Handle errors for JDBC
+			  se.printStackTrace();
+			}catch(Exception e){
+			  //Handle errors for Class.forName
+			  e.printStackTrace();
+			}finally{
+			  //finally block used to close resources
+			  try{
+			     if(stmt!=null)
+			        stmt.close();
+			  }catch(SQLException se2){
+			  }// nothing we can do
+			  try{
+			     if(conn!=null)
+			        conn.close();
+			  }catch(SQLException se){
+			     se.printStackTrace();
+			  }//end finally try
+			}//end try
+			System.out.println("Goodbye!");
+			return aRetornar;	
+		}
+	
+	
 	public void salvarObra(String nome, double custo, String descricao) {
 		Connection conn = null;
 		Statement stmt = null;
